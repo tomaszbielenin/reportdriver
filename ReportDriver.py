@@ -1,6 +1,7 @@
 # Add main page report
 # Add try catch for report pages
 # Add pages 2,3 from tool list
+# Add fail log
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -12,14 +13,16 @@ import time
 
 # UI option
 driver = webdriver.Chrome()
+# url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre'
 url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre/places'
+links = [url]
 myElem = None
 counter = 1
 while myElem == None:
     driver.get(url)
     delay = 15 # seconds
     try:
-        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.CLASS_NAME, 'js-browse-thumbnail')))
+        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "community-analytics")))
         print("Page is ready!")
     except TimeoutException:
         print(str(counter) + ". Loading took too much time!")
@@ -28,8 +31,9 @@ while myElem == None:
         counter += 1
 
 # Here goes link scrapper
+
+# a = driver.find_elements_by_xpath("//div/a")
 a = driver.find_elements_by_xpath("//h4/a")
-links = []
 for  l in a:
     links.append(l.get_attribute('href'))
 
