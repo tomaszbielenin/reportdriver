@@ -15,31 +15,27 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 import time
-import os
+# import os
 
 # Creates dowload path:
-downloadPath = 'C:\\Users\\tbieleni\\Downloads\\JCReports'
-if not os.path.exists(downloadPath):
-    os.makedirs(downloadPath, exist_ok=True)
+# downloadPath = 'C:\\Users\\tbieleni\\Downloads\\JCReports'
+# if not os.path.exists(downloadPath):
+#     os.makedirs(downloadPath, exist_ok=True)
 
 # Purges old files:
-for f in os.listdir(downloadPath):
-    os.remove(downloadPath+'\\'+f)
+# for f in os.listdir(downloadPath):
+#     os.remove(downloadPath+'\\'+f)
 
 # UI option
 
 #  Sets download path for Chrome
-options = webdriver.ChromeOptions()
-prefs = {'download.default_directory' : downloadPath}
-options.add_experimental_option("prefs", prefs)
-# browser = webdriver.Chrome(chrome_options=options, executable_path=CHROMEDRIVER_PATH)
-# chrome_options = webdriver.ChromeOptions()
-# prefs = {'download.default_directory' : 'C:/Users/tbieleni/Downloads/JCReports'}
-# chrome_options.add_experimental_option('prefs', prefs)
+# options = webdriver.ChromeOptions()
+# prefs = {'download.default_directory' : downloadPath}
+# options.add_experimental_option("prefs", prefs)
 
 # Starts AU Chrome
-driver = webdriver.Chrome(chrome_options=options)
-# driver = webdriver.Chrome()
+# driver = webdriver.Chrome(chrome_options=options)
+driver = webdriver.Chrome()
 url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre'
 # url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre/places'
 driver.get(url)
@@ -65,7 +61,7 @@ f = driver.switch_to_frame('widgetIframe2484049')
 a = driver.find_elements_by_xpath("//div[@id='solution-name']/a")
 # a = driver.find_elements_by_xpath("//h4/a")
 # links = []
-for  e in a:
+for  e in a: # [:4] set range for showcase
     links.append(e.get_attribute('href'))
 
 # Loop through available pages and run report
@@ -76,7 +72,7 @@ for l in links: # [:3] set range for showcase
     lnk = ca.get_attribute('href')
     reports.append(lnk)
 
-for r in reports: # [:5]
+for r in reports: # [:5] set range for showcase
     driver.get(r) # go to report page
     delay = 10 # seconds
     try:
