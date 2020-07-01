@@ -8,21 +8,21 @@ from selenium.webdriver.chrome.options import Options
 import time
 import os
 
-# Creates dowload path:
-downloadPath = 'C:\\Users\\tbieleni\\Downloads\\SCReports'
+# Create dowload path:
+downloadPath = 'C:\\Users\\tbieleni\\Downloads\\SC_Reports'
 if not os.path.exists(downloadPath):
     os.makedirs(downloadPath, exist_ok=True)
 
-# Purges old files:
+# Purge old files:
 # for f in os.listdir(downloadPath):
 #     os.remove(downloadPath+'\\'+f)
 
-#  Sets download path for Chrome
+#  Set download path for Chrome
 options = webdriver.ChromeOptions()
 prefs = {'download.default_directory' : downloadPath}
 options.add_experimental_option("prefs", prefs)
 
-# Starts Chrome
+# Start Chrome session
 driver = webdriver.Chrome(chrome_options=options)
 url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre'
 driver.get(url)
