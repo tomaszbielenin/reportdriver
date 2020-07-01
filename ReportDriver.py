@@ -6,7 +6,7 @@
 # How to modify download folder
 # Headless option
 
-#Get ready:
+#Imports goes here:
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -39,8 +39,6 @@ driver = webdriver.Chrome()
 url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre'
 # url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre/places'
 driver.get(url)
-links = [url]
-
 # Give it a 5 tries
 myElem = None
 counter = 1
@@ -60,7 +58,7 @@ while myElem == None:
 f = driver.switch_to_frame('widgetIframe2484049')
 a = driver.find_elements_by_xpath("//div[@id='solution-name']/a")
 # a = driver.find_elements_by_xpath("//h4/a")
-# links = []
+links = [url]
 for  e in a: # [:4] set range for showcase
     links.append(e.get_attribute('href'))
 
@@ -83,7 +81,7 @@ for r in reports: # [:5] set range for showcase
     button = driver.find_element_by_id('daily_activity_csv') # find report button
     button.click() # export report
 
-driver.get("https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre/")
+driver.get(url)
 # time.sleep(10)
 # driver.quit()
 
