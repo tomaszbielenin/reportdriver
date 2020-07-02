@@ -1,4 +1,4 @@
-#Imports goes here:
+# Imports goes here:
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -66,6 +66,7 @@ for r in reports: # [:5] set range for showcase
     button = driver.find_element_by_id('daily_activity_csv') # find report button
     button.click() # export report
 
+# Go back to main page
 driver.get(url)
 # time.sleep(10)
 # driver.quit()
