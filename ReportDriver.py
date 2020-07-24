@@ -46,7 +46,7 @@ while myElem == None:
     driver.get(url)
     delay = 15 # seconds
     try:
-        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "widgetIframe2484049")))
+        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "widgetIframe2506723")))
         print("Page is ready!")
     except TimeoutException:
         print(str(counter) + ". Loading took too much time!")
@@ -55,7 +55,7 @@ while myElem == None:
         counter += 1
 
 # Get Solutions frame and solution links
-f = driver.switch_to_frame('widgetIframe2484049')
+f = driver.switch_to.frame('widgetIframe2506723')
 a = driver.find_elements_by_xpath("//div[@id='solution-name']/a")
 # a = driver.find_elements_by_xpath("//h4/a")
 links = [url]
