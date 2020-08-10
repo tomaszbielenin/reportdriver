@@ -33,12 +33,14 @@ import time
 # prefs = {'download.default_directory' : downloadPath}
 # options.add_experimental_option("prefs", prefs)
 
+# Open report list:
+with open("C:/Users/tbieleni/Downloads/links.txt", 'a+') as myfile:
+    myfile.write("appended text")
 # Starts AU Chrome
 # driver = webdriver.Chrome(chrome_options=options)
 driver = webdriver.Chrome()
 url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre'
-# url = 'https://jacobsconnect.jacobs.com/community/company/bldgs-infra/bi-europe/delivery-excellence/solution-centre/places'
-driver.get(url)
+# driver.get(url)
 # Give it a 5 tries
 myElem = None
 counter = 1
@@ -46,7 +48,8 @@ while myElem == None:
     driver.get(url)
     delay = 15 # seconds
     try:
-        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "widgetIframe2506723")))
+        # myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "card-columns")))
+        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, "widgetIframe2518646")))
         print("Page is ready!")
     except TimeoutException:
         print(str(counter) + ". Loading took too much time!")
