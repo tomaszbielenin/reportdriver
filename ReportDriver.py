@@ -33,9 +33,6 @@ import time
 # prefs = {'download.default_directory' : downloadPath}
 # options.add_experimental_option("prefs", prefs)
 
-# Open report list:
-with open("C:/Users/tbieleni/Downloads/links.txt", 'a+') as myfile:
-    myfile.write("appended text")
 # Starts AU Chrome
 # driver = webdriver.Chrome(chrome_options=options)
 driver = webdriver.Chrome()
@@ -58,8 +55,8 @@ while myElem == None:
         counter += 1
 
 # Get Solutions frame and solution links
-f = driver.switch_to.frame('widgetIframe2506723')
-a = driver.find_elements_by_xpath("//div[@id='solution-name']/a")
+f = driver.switch_to.frame('widgetIframe2518646')
+a = driver.find_elements_by_xpath("//div[@class='card-body']/a")
 # a = driver.find_elements_by_xpath("//h4/a")
 links = [url]
 for  e in a: # [:4] set range for showcase
@@ -87,4 +84,3 @@ for r in reports: # [:5] set range for showcase
 driver.get(url)
 # time.sleep(10)
 # driver.quit()
-
